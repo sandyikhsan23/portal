@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Kopi Tidore</title>
+    <link rel="stylesheet" href="design.css"/>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+</head>
+<body background="images/techbg.gif">
+    <div class="wrapper">
+        <form id="loginForm">
+            <h1>Login</h1>
+            <h3>Selamat Datang, Tidorer's</h3>
+            <div class="input-box">
+                <input type="text" id="username" name="username" placeholder="Username">
+                <i class='bx bxs-user'></i>
+                <div id="usernameError" class="error"></div>
+            </div>
+    
+            <div class="input-box">
+                <input type="password" id="password" name="password" placeholder="Password">
+                <div id="passwordError" class="error"></div>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <br>
+
+            <div class="remember-forgot">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="">Forgot password?</a>
+            </div>
+            
+            <button type="submit" class="btn">Login</button>
+            <div id="loginError" class="error"></div>
+            
+            <div class="register-link">
+                <p>Don't have account? <a href="">Register</a></p>
+            </div>
+        </form>
+        </form>
+    </div>
+<script>
+    function validateForm() {
+    var username = document.getElementById('username').value.trim();
+    var password = document.getElementById('password').value.trim();
+    var usernameError = document.getElementById('usernameError');
+    var passwordError = document.getElementById('passwordError');
+    var loginError = document.getElementById('loginError');
+    var isValid = true;
+
+    usernameError.innerHTML = "";
+    passwordError.innerHTML = "";
+    loginError.innerHTML = "";
+
+    if (username === "") {
+        usernameError.innerHTML = "Username tidak boleh kosong";
+        isValid = false;
+    }
+
+    if (password === "") {
+        passwordError.innerHTML = "Password tidak boleh kosong";
+        isValid = false;
+    }
+
+    if (isValid) {
+        if (username === "admin" && password === "123") {
+            alert("Selamat datang admin");
+            return true;
+        } else {
+            loginError.innerHTML = "Akun tidak dikenali";
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    validateForm();
+});
+</script>
+</body>
+</html>
